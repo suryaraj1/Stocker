@@ -1,13 +1,13 @@
 .alert-component-wrapper {
-  height: 60px;
-  width: 340px;
-  border-radius: 5px;
+  height: 70px;
+  width: 360px;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #fafafa;
   padding: 20px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   margin-top: 30px;
   transition: 0.4s ease;
