@@ -59,8 +59,8 @@ class RightSection extends React.Component {
                 valuePercentage: parseFloat(lossPercentage).toFixed(2),
                 loss: true,
                 profit: false,
-                unchanged: false,
-            });
+                unChanged: false,
+            })
         } else if (currentStockPrice > initialStockPrice) {
             const profit = (currentStockPrice - initialStockPrice) * stockQuantity;
             const profitPercentage = (profit / (initialStockPrice * stockQuantity)) * 100.0;
