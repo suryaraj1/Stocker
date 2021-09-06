@@ -15,6 +15,7 @@ class RightSection extends React.Component {
             profit: false,
             loss: false,
             unchanged: false,
+            isNegativeInput: false,
             clickCount: 0
         }
     }
@@ -36,19 +37,6 @@ class RightSection extends React.Component {
             currentStockPrice: parseFloat(price)
         })
     }
-
-    reset = () => {
-        this.setState({
-            initialStockPrice: 0,
-            currentStockPrice: 0,
-            stockQuantity: 0,
-            profit: false, 
-            loss: false, 
-            unChanged: false, 
-            value: 0.0,
-            valuePercentage: 0.00
-        })
-    }
     
     analyzeStocks = (initialStockPrice, stockQuantity, currentStockPrice) => {
         if (initialStockPrice > currentStockPrice) {
@@ -60,6 +48,7 @@ class RightSection extends React.Component {
                 loss: true,
                 profit: false,
                 unChanged: false,
+                isNegativeInput: false
             })
         } else if (currentStockPrice > initialStockPrice) {
             const profit = (currentStockPrice - initialStockPrice) * stockQuantity;
@@ -69,27 +58,40 @@ class RightSection extends React.Component {
                 valuePercentage: parseFloat(profitPercentage).toFixed(2),
                 profit: true,
                 loss: false,
-                unChanged: false
+                unChanged: false,
+                isNegativeInput: false
             })
         } else {
             this.setState({
                 unChanged: true,
                 profit: false,
-                loss: false
+                loss: false,
+                isNegativeInput: false
             })
         }
     }
 
+    validateInput = () => {
+        const { initialStockPrice, stockQuantity, currentStockPrice } = this.state;
+        return (initialStockPrice >= 0.0 && stockQuantity >= 0 && currentStockPrice >= 0.0);
+    }
+
     onClickHandler = () => {
         const { initialStockPrice, stockQuantity, currentStockPrice } = this.state;
-        this.analyzeStocks(initialStockPrice, stockQuantity, currentStockPrice);
+        if (this.validateInput(initialStockPrice, stockQuantity, currentStockPrice)) {
+            this.analyzeStocks(initialStockPrice, stockQuantity, currentStockPrice);
+        } else {
+            this.setState({
+                isNegativeInput: true
+            })
+        }
         this.setState({
             clickCount: this.state.clickCount + 1,
         })
     }
 
     render() {
-        const { profit, loss, unChanged, clickCount, value, valuePercentage } = this.state; 
+        const { profit, loss, unChanged, clickCount, value, valuePercentage, isNegativeInput } = this.state; 
         return (
             <div className='right-section-wrapper'>
                 <div className='right-section-input-wrapper'>
@@ -101,7 +103,7 @@ class RightSection extends React.Component {
                     <button onClick={this.onClickHandler}>Check</button>
                 </div>
                 <div className='right-section-alert-wrapper'>
-                    {clickCount > 0 && <AlertComponent profit={profit} loss={loss} unChanged={unChanged} value={value} valuePercentage={valuePercentage}/>}
+                    {clickCount > 0 && <AlertComponent profit={profit} loss={loss} unChanged={unChanged} value={value} valuePercentage={valuePercentage} isNegativeInput={isNegativeInput}/>}
                 </div>
             </div>
         )

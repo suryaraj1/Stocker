@@ -1,3 +1,4 @@
+.alert-component-wrapper-negative-inputs,
 .alert-component-wrapper {
   height: 70px;
   width: 360px;
@@ -11,6 +12,14 @@
   font-weight: bold;
   margin-top: 40px;
   transition: 0.4s ease;
+}
+
+.alert-component-wrapper-negative-inputs {
+  background: #5d6b79;
+}
+
+.alert-component-wrapper-negative-inputs .alert {
+  color: #fafafa;
 }
 
 .alert-component-wrapper.profit {
