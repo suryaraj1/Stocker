@@ -21,19 +21,19 @@ class RightSection extends React.Component {
 
     initialPriceHandler = price => {
         this.setState({
-            initialStockPrice: price
+            initialStockPrice: parseFloat(price)
         })
     }
 
     stockQuantityHandler = quantity => {
         this.setState({
-            stockQuantity: quantity
+            stockQuantity: parseInt(quantity)
         })
     }
 
     currentPriceHandler = price => {
         this.setState({
-            currentStockPrice: price
+            currentStockPrice: parseFloat(price)
         })
     }
 
