@@ -1,4 +1,5 @@
 import React from 'react';
+import AlertComponent from '../AlertComponent/AlertComponent';
 import InputComponent from '../InputComponent/InputComponent';
 import './RightSection.css';
 
@@ -8,7 +9,12 @@ class RightSection extends React.Component {
         this.state = {
             initialStockPrice: "",
             stockQuantity: 0,
-            currentStockPrice: ""
+            currentStockPrice: "",
+            value: 0.00,
+            valuePercentage: 0.00,
+            profit: false,
+            loss: false,
+            unchanged: false
         }
     }
 
@@ -29,8 +35,33 @@ class RightSection extends React.Component {
             currentStockPrice: price
         })
     }
+    
+    analyzeStocks = (initialStockPrice, stockQuantity, currentStockPrice) => {
+        if (initialStockPrice > currentStockPrice) {
+            const loss = (initialStockPrice - currentStockPrice) * stockQuantity;
+            const lossPercentage = (loss / (initialStockPrice * stockQuantity)) * 100.0;
+            this.setState({
+                loss: true,
+                value: parseFloat(loss).toFixed(2),
+                valuePercentage: parseFloat(lossPercentage).toFixed(2)
+            })
+        } else if (currentStockPrice > initialStockPrice) {
+            const profit = (currentStockPrice - initialStockPrice) * stockQuantity;
+            const profitPercentage = (profit / (initialStockPrice * stockQuantity)) * 100.0;
+            this.setState({
+                profit: true,
+                value: parseFloat(profit).toFixed(2),
+                valuePercentage: parseFloat(profitPercentage).toFixed(2)
+            })
+        } else {
+            this.setState({
+                unChanged: true
+            })
+        }
+    }
 
     render() {
+        const { profit, loss, unChanged } = this.state; 
         return (
             <div className='right-section-wrapper'>
                 <div className='right-section-input-wrapper'>
@@ -40,6 +71,9 @@ class RightSection extends React.Component {
                 </div>
                 <div className='right-section-btn-wrapper'>
                     <button>Check</button>
+                </div>
+                <div className='right-section-alert-wrapper'>
+                    <AlertComponent profit={profit} loss={loss} unChanged={unChanged}/>
                 </div>
             </div>
         )
