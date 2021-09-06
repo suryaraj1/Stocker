@@ -1,7 +1,20 @@
+.header-main-text-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .header-main-text {
   font-size: 90px;
   font-weight: 600;
   color: #fafafa;
+}
+
+.header-main-text-wrapper svg {
+  height: 90px;
+  width: 80px;
+  color: #61b37c;
+  margin-left: 11px;
+  margin-top: 2px;
 }
 
 .header-sub-text-wrapper {
