@@ -1,0 +1,14 @@
+.header-main-text {
+  font-size: 90px;
+  font-weight: 600;
+  color: #fafafa;
+}
+
+.header-sub-text-wrapper {
+  width: 400px;
+}
+
+.header-sub-text {
+  color: #f3f3f3;
+  font-size: 19px;
+}

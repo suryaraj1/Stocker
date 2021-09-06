@@ -1,0 +1,22 @@
+.input-component-label {
+  font-size: 20px;
+  color: #fafafa;
+  font-weight: 600;
+  margin-bottom: 11px;
+}
+
+.input-box {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  height: 60px;
+  padding: 7px 12px;
+  font-size: 24px;
+  width: 340px;
+  transition: 0.3s ease;
+  background: #c8c7c7;
+}
+
+.input-box:focus {
+  background: #ffffff;
+}
