@@ -1,0 +1,38 @@
+.alert-component-wrapper {
+  height: 60px;
+  width: 340px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  padding: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 30px;
+  transition: 0.4s ease;
+}
+
+.alert-component-wrapper.profit {
+  background: #e7feee;
+}
+
+.alert-component-wrapper.profit .alert {
+  color: #61b37c;
+}
+
+.alert-component-wrapper.unchanged {
+  background: #fef4e7;
+}
+
+.alert-component-wrapper.unchanged .alert {
+  color: #f28f0d;
+}
+
+.alert-component-wrapper.loss {
+  background: #fee7e7;
+}
+
+.alert-component-wrapper.loss .alert {
+  color: #f76e6e;
+}
