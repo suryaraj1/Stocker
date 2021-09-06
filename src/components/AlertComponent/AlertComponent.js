@@ -18,8 +18,6 @@ const appendStyle = (profit, loss, unChanged) => {
         return "loss";
     } else if (unChanged && !profit && !loss) {
         return "unchanged";
-    } else {
-        return "null";
     }
 }
 
