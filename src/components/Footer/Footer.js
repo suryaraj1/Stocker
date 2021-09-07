@@ -16,6 +16,9 @@ const Footer = () => {
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="Linkedin"/>
                 </div>
             </div>
+            <div className='privacy-notice-wrapper'>
+                <p>Privacy Notice - No data is being stored</p>
+            </div>
         </div>
     )
 }
