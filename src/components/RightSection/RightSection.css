@@ -37,6 +37,14 @@
   transition: 0.4s ease;
 }
 
-.right-section-btn-wrapper button:hover {
+.disabled {
+  opacity: 0.5;
+}
+
+.disabled:hover {
+  transform: scale(1);
+}
+
+.active:hover {
   box-shadow: 2px 2px 20px #4a7d3a;
 }

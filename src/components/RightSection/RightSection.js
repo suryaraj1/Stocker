@@ -90,6 +90,11 @@ class RightSection extends React.Component {
         })
     }
 
+    validateInput = () => {
+        const { initialStockPrice,stockQuantity, currentStockPrice } = this.state;
+        return (initialStockPrice !== 0 && stockQuantity !== 0 && currentStockPrice !== 0);
+    }
+
     render() {
         const { profit, loss, unChanged, clickCount, value, valuePercentage, isNegativeInput } = this.state; 
         return (
@@ -100,7 +105,7 @@ class RightSection extends React.Component {
                     <InputComponent inputLabel="Current Stock Price" handler={this.currentPriceHandler}/>
                 </div>
                 <div className='right-section-btn-wrapper'>
-                    <button onClick={this.onClickHandler}>Check</button>
+                    <button className={`${!this.validateInput() ? "disabled" : "active"}`} onClick={this.onClickHandler} disabled={!this.validateInput()}>Check</button>
                 </div>
                 <div className='right-section-alert-wrapper'>
                     {clickCount > 0 && <AlertComponent profit={profit} loss={loss} unChanged={unChanged} value={value} valuePercentage={valuePercentage} isNegativeInput={isNegativeInput}/>}
