@@ -19,3 +19,4 @@ Technologies used in the project:
 *   Figma
 *   React
 *   CSS
+*   Netlify
