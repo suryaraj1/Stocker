@@ -76,14 +76,19 @@ class RightSection extends React.Component {
         return (initialStockPrice >= 0.0 && stockQuantity >= 0 && currentStockPrice >= 0.0);
     }
 
+    areInputsNegative = () => {
+        const { initialStockPrice, stockQuantity, currentStockPrice } = this.state;
+        return (initialStockPrice < 0.0 || stockQuantity < 0 || currentStockPrice < 0.0);
+    }
+
     onClickHandler = () => {
         const { initialStockPrice, stockQuantity, currentStockPrice } = this.state;
-        if (this.validateInput(initialStockPrice, stockQuantity, currentStockPrice)) {
-            this.analyzeStocks(initialStockPrice, stockQuantity, currentStockPrice);
-        } else {
+        if (this.areInputsNegative()) {
             this.setState({
                 isNegativeInput: true
             })
+        } else if (this.validateInput(initialStockPrice, stockQuantity, currentStockPrice)) {
+            this.analyzeStocks(initialStockPrice, stockQuantity, currentStockPrice);
         }
         this.setState({
             clickCount: this.state.clickCount + 1,
