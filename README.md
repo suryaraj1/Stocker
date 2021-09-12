@@ -8,8 +8,7 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://gcdn.pbrd.co/images/8jisnpGuRKQH.png?o=1" alt="shields" width="800" height="400/">
-
+![Zircon Application](https://gcdn.pbrd.co/images/8jisnpGuRKQH.png?o=1)
   
   
 <h2>💻 Built with</h2>
